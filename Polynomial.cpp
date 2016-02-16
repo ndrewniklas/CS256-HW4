@@ -67,7 +67,7 @@ int Polynomial::getSize() const{
 }
 
 int Polynomial::degree() const{
-	for(int i = size; i > 0; --i){
+	for(int i = size - 1; i > 0; --i){
 		if(rint(coeff[i]) != 0){
 			return i;
 		}
@@ -147,10 +147,14 @@ double Polynomial::solve(double x) const{
 }
 
 void Polynomial::grow(int n){
-	double* temp = new double[n];
+	double* temp = new double[n + 1];
 	for(int i = 0; i < size; ++i){
 		temp[i] = coeff[i];
 	}
+	for(int j = size; j < n + 1; ++j){
+		temp[j] = 0;
+	}
+	size = n + 1;
 	delete [] coeff;
 	coeff = temp;
 }
