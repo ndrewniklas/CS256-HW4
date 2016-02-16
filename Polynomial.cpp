@@ -78,7 +78,7 @@ int Polynomial::degree() const{
 std::string Polynomial::str() const{
 	std::stringstream s;
 	bool first = true;
-	for(int i = size-1; i >= 0; --i){
+	for(int i = size - 1; i >= 0; --i){
 		if(std::islessequal(coeff[i], 0.0) && std::isgreaterequal(coeff[i], 0.0)){
 			//coeff[i] == 0
 			
@@ -128,6 +128,22 @@ std::string Polynomial::str() const{
 	}
 	
 	return s.str();
+}
+
+double Polynomial::solve(double x) const{
+	double total = 0.0;
+	double subTtl = 0.0;
+	for(int i = size - 1; i >= 0; --i){
+		subTtl = 0.0;
+		//x^i
+		subTtl = pow(x, i);
+		//coeff * x^i
+		subTtl *= coeff[i];
+		
+		total += subTtl;
+	}
+	
+	return total;
 }
 
 

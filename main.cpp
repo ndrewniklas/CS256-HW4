@@ -82,21 +82,21 @@ public:
     {
         Polynomial p(2.1);
         printResult("str: 2.1", p.str() == "2.1");
-		std::cout << p.str() << "\n" << std::endl;
+		// std::cout << p.str() << "\n" << std::endl;
         double cf[3] = {0, 0, 4};
         p = Polynomial(cf, 3);
         printResult("str: 4x^2", p.str() == "4x^2");
-		std::cout << p.str() << "\n" << std::endl;
+		// std::cout << p.str() << "\n" << std::endl;
         double cf2[6] = {-1.3, 2, 3.14, 0, 0, 8};
         p = Polynomial(cf2, 6);
         printResult("str: 8x^5 + 3.14x^2 + 2x - 1.3", p.str() == "8x^5 + 3.14x^2 + 2x - 1.3");
-		std::cout << p.str() << "\n" << std::endl;
+		// std::cout << p.str() << "\n" << std::endl;
         double cf3[9] = {0, 0, -1, 0, -1, 1, 2, 3, 4};
         p = Polynomial(cf3, 9);
         printResult("str: 4x^8 + 3x^7 + 2x^6 + x^5 - x^4 - x^2", p.str() == "4x^8 + 3x^7 + 2x^6 + x^5 - x^4 - x^2");
-		std::cout << p.str() << "\n" << std::endl;
+		// std::cout << p.str() << "\n" << std::endl;
     }
-/*
+
     void testSolve() const
     {
         Polynomial p(7);
@@ -203,7 +203,7 @@ int main()
     pt.testConstructors();
     pt.testSizes();
     pt.testToString();
-    //pt.testSolve();
+    pt.testSolve();
     //pt.testBrackets();
     //pt.testArithmetic();
     //pt.testAssignments();

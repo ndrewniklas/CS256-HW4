@@ -30,6 +30,8 @@ public:
 	
 	std::string str() const;
 	
+	double solve(double x) const;
+	
 };
 
 #endif
