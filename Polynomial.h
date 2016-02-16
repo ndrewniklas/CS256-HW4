@@ -28,6 +28,8 @@ public:
 	int getSize() const;
 	int degree() const;
 	
+	std::string str() const;
+	
 };
 
 #endif

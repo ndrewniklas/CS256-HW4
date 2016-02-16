@@ -75,6 +75,60 @@ int Polynomial::degree() const{
 	return -1;
 }
 
+std::string Polynomial::str() const{
+	std::stringstream s;
+	bool first = true;
+	for(int i = size-1; i >= 0; --i){
+		if(std::islessequal(coeff[i], 0.0) && std::isgreaterequal(coeff[i], 0.0)){
+			//coeff[i] == 0
+			
+		}else if(std::isless(coeff[i], -1.0)){
+			//coeff[i] < -1
+			first ? s <<  "" : s <<  " - ";
+			s <<  fabs(coeff[i]);
+			if(i > 1){
+				s <<  "x^";
+				s <<  i;
+			}else if(i == 1){
+				s << "x";
+			}
+			
+		}else if(std::isgreater(coeff[i], 1.0)){
+			//coeff[i] > 1
+			first ? s <<  "" : s <<  " + ";
+			s <<  fabs(coeff[i]);
+			if(i > 1){
+				s <<  "x^";
+				s <<  i;
+			}else if(i == 1){
+				s << "x";
+			}
+			
+		}else if(std::islessequal(coeff[i], 1.0) && std::isgreaterequal(coeff[i], 1.0)){
+			//coeff[i] == 1
+			first ? s <<  "" : s <<  " + ";
+			if(i > 1){
+				s <<  "x^";
+				s <<  i;
+			}else if(i == 1){
+				s << "x";
+			}
+			
+		}else if(std::islessequal(coeff[i], -1.0) && std::isgreaterequal(coeff[i], -1.0)){
+			//coeff[i] == -1
+			first ? s <<  "" : s <<  " - ";
+			if(i > 1){
+				s <<  "x^";
+				s <<  i;
+			}else if(i == 1){
+				s << "x";
+			}	
+		}
+		first = false;
+	}
+	
+	return s.str();
+}
 
 
 
