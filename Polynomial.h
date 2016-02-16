@@ -25,6 +25,9 @@ public:
 	
 	Polynomial& operator=(const Polynomial& right);
 	
+	int getSize() const;
+	int degree() const;
+	
 };
 
 #endif

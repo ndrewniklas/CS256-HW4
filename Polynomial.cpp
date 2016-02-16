@@ -62,6 +62,18 @@ Polynomial& Polynomial::operator=(const Polynomial& right){
 	return *this;
 }
 
+int Polynomial::getSize() const{
+	return size;
+}
+
+int Polynomial::degree() const{
+	for(int i = size; i > 0; --i){
+		if(rint(coeff[i]) != 0){
+			return i;
+		}
+	}
+	return -1;
+}
 
 
 
