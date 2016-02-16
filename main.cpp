@@ -105,7 +105,7 @@ public:
         p = Polynomial(cf, 5);
         printResult("9x^4 + 2x^3 - 6x^2 + 41x - 3 solve(3)", p.solve(3) == 849);
     }
-/*
+
     void testBrackets() const
     {
         Polynomial p(0);
@@ -204,7 +204,7 @@ int main()
     pt.testSizes();
     pt.testToString();
     pt.testSolve();
-    //pt.testBrackets();
+    pt.testBrackets();
     //pt.testArithmetic();
     //pt.testAssignments();
     //pt.testEquals();

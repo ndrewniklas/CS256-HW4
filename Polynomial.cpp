@@ -146,6 +146,24 @@ double Polynomial::solve(double x) const{
 	return total;
 }
 
+void Polynomial::grow(int n){
+	double* temp = new double[n];
+	for(int i = 0; i < size; ++i){
+		temp[i] = coeff[i];
+	}
+	delete [] coeff;
+	coeff = temp;
+}
+
+double& Polynomial::operator[](int n){
+	//if modifing
+	if(size < n){
+		grow(n);
+	}
+	return coeff[n];
+}
+
+
 
 
 

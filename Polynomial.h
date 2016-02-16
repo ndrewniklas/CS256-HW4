@@ -14,6 +14,7 @@ private:
     // add your instance variables here
 	double* coeff;
 	int size;
+	void grow(int n);
 public:
     // add your function declarations here
 	Polynomial();
@@ -31,6 +32,8 @@ public:
 	std::string str() const;
 	
 	double solve(double x) const;
+	
+	double& operator[](int n);
 	
 };
 
