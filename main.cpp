@@ -21,7 +21,7 @@ public:
         printResult("This should always pass.", true);
     }
 
-/*
+
     void testConstructors() const
     {
         Polynomial pDefault;
@@ -193,7 +193,7 @@ int main()
 
     pt.testExistence();
 
-    //pt.testConstructors();
+    pt.testConstructors();
     //pt.testSizes();
     //pt.testToString();
     //pt.testSolve();

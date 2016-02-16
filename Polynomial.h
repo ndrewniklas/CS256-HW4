@@ -12,8 +12,19 @@ class Polynomial
 
 private:
     // add your instance variables here
+	double* coeff;
+	int size;
 public:
-    // add yourfunction declarations here
+    // add your function declarations here
+	Polynomial();
+	Polynomial(double arr[], int size);
+	Polynomial(const Polynomial& other);
+	Polynomial(int value);
+	Polynomial(double value);
+	~Polynomial();
+	
+	Polynomial& operator=(const Polynomial& right);
+	
 };
 
 #endif
