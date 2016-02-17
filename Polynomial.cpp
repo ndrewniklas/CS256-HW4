@@ -73,6 +73,8 @@ int Polynomial::degree() const{
 		for(int i = size - 1; i >= 0; --i){
 			if(!(std::islessequal(coeff[i], 0.0) && std::isgreaterequal(coeff[i], 0.0))){
 				return i;
+			}else if(i == 0){
+				return i;
 			}
 		}
 	}
@@ -210,7 +212,7 @@ Polynomial Polynomial::operator+(const Polynomial& right) const{
 Polynomial Polynomial::operator-(const Polynomial& right) const{
 	double* temp = new double[right.size];
 	for(int i = 0; i < right.size; ++i){
-		temp[i] = (-(right.coeff[i]));
+		temp[i] = -right.coeff[i];
 	}
 	Polynomial p = Polynomial(temp, right.size);
 	delete [] temp;

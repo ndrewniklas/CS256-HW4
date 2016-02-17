@@ -11,7 +11,7 @@ class PolyTester
 public:
     void printResult(string output, bool pass) const
     {
-        std::cout << (pass ? "PASS\t" : "  FAIL\t")
+        std::cout << (pass ? "PASS\t" : "    FAIL\t")
               << output << std::endl;
     }
 
@@ -141,6 +141,8 @@ public:
         plusCorrect &= p3.degree() == 6;
         printResult("deg4 + deg7", plusCorrect);
         p3 = p3 - p3;
+		// std::cout << "size: " << p3.getSize() << std::endl;
+		// std::cout << "degree: " << p3.degree() << std::endl;
         printResult("p3 - p3", p3.coeff[0] == 0 && p3.degree() == 0);
         Polynomial p4(p1 * p2);
         printResult("p1 * p2", p4.str() == "-9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6");
