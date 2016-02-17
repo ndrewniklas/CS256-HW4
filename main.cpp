@@ -105,36 +105,19 @@ public:
         p = Polynomial(cf, 5);
         printResult("9x^4 + 2x^3 - 6x^2 + 41x - 3 solve(3)", p.solve(3) == 849);
     }
-/*
+
     void testBrackets() const
     {
         Polynomial p(0);
         p[0] = 4;
-        std::cout << p.str() << std::endl;
-        for(int i = 0; i < p.getSize(); ++i){
-			std::cout << p.coeff[i] << " ";
-		}
-        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[0] = 4", p.coeff[0] == 4 && p.degree() == 0);
-       
         p[1] = 2.1;
-        std::cout << p.str() << std::endl;
-        for(int i = 0; i < p.getSize(); ++i){
-			std::cout << p.coeff[i] << " ";
-		}
-        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[1] = 2.1", p.coeff[0] == 4 && p.coeff[1] == 2.1 && p.degree() == 1);
-       
         p[4] = -5;
-        std::cout << p.str() << std::endl;
-        for(int i = 0; i < p.getSize(); ++i){
-			std::cout << p.coeff[i] << " ";
-		}
-        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[4] = -5", p.coeff[0] == 4 && p.coeff[1] == 2.1 && p.coeff[2] == 0 
                 && p.coeff[3] == 0 && p.coeff[4] == -5 && p.degree() == 4);
     }
-*/
+
     void testArithmetic() const
     {
         Polynomial p1(3);
@@ -221,7 +204,7 @@ int main()
     pt.testSizes();
     pt.testToString();
     pt.testSolve();
-    //pt.testBrackets();
+    pt.testBrackets();
     pt.testArithmetic();
     //pt.testAssignments();
     //pt.testEquals();

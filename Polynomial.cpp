@@ -100,7 +100,7 @@ std::string Polynomial::str() const{
 			
 		}else if(std::isgreater(coeff[i], 1.0)){
 			//coeff[i] > 1
-			first ? s <<  "" : s <<  " + ";
+			first ? s <<  "" : s <<	 " + ";
 			s <<  fabs(coeff[i]);
 			if(i > 1){
 				s <<  "x^";
@@ -111,7 +111,7 @@ std::string Polynomial::str() const{
 			
 		}else if(std::islessequal(coeff[i], 1.0) && std::isgreaterequal(coeff[i], 1.0)){
 			//coeff[i] == 1
-			first ? s <<  "" : s <<  " + ";
+			first ? s <<  "" : s <<	 " + ";
 			if(i > 1){
 				s <<  "x^";
 				s <<  i;
@@ -157,7 +157,7 @@ void Polynomial::grow(int n){
 	for(int i = 0; i < size; ++i){
 		temp[i] = coeff[i];
 	}
-	for(int j = size; j <= n; ++j){
+	for(int j = size; j < n; ++j){
 		temp[j] = 0;
 	}
 	size = n;
@@ -166,14 +166,14 @@ void Polynomial::grow(int n){
 }
 
 double& Polynomial::operator[](int n){
-	std::cout << "\nsize: " << size << std::endl;
-	std::cout << "n: " << n << std::endl;
-	if(size < n){
+	// std::cout << "\nsize: " << size << std::endl;
+	// std::cout << "n: " << n << std::endl;
+	if(size <= n){
 		grow(n + 1);
 	}else if(size == n){
 		grow(n + 1);
 	}
-	std::cout << "new size: " << size << std::endl;
+	// std::cout << "new size: " << size << std::endl;
 	return coeff[n];
 }
 
