@@ -88,8 +88,8 @@ std::string Polynomial::str() const{
 			
 		}else if(std::isless(coeff[i], -1.0)){
 			//coeff[i] < -1
-			s << " - ";
-			//first ? s <<  "" : s <<  " - ";
+			//s << " - ";
+			first ? s <<  "-" : s <<  " - ";
 			s <<  fabs(coeff[i]);
 			if(i > 1){
 				s <<  "x^";
@@ -121,8 +121,8 @@ std::string Polynomial::str() const{
 			
 		}else if(std::islessequal(coeff[i], -1.0) && std::isgreaterequal(coeff[i], -1.0)){
 			//coeff[i] == -1
-			s << " - ";
-			//first ? s <<  "" : s <<  " - ";
+			//s << " - ";
+			first ? s <<  "-" : s <<  " - ";
 			if(i > 1){
 				s <<  "x^";
 				s <<  i;
@@ -177,6 +177,68 @@ double& Polynomial::operator[](int n){
 	return coeff[n];
 }
 
+Polynomial Polynomial::operator+(const Polynomial& right) const{
+	int tmpSize = 0;
+	int smaller = 0;
+	if(size >= right.size){
+		tmpSize = size;
+		smaller = right.size;
+	}else{
+		tmpSize = right.size;
+		smaller = size;
+	}
+	double* temp = new double[tmpSize];
+	for(int i = 0; i < smaller; ++i){
+		temp[i] = (coeff[i] + right.coeff[i]);
+	}
+	if(smaller == size){
+		for(int j = smaller; j < tmpSize; ++j){
+			temp[j] = right.coeff[j];
+		}
+	}else{
+		for(int j = smaller; j < tmpSize; ++j){
+			temp[j] = coeff[j];
+		}
+	}
+	Polynomial p = Polynomial(temp, tmpSize);
+	delete [] temp;
+	temp = nullptr;
+	return p;
+
+}
+
+Polynomial Polynomial::operator-(const Polynomial& right) const{
+	double* temp = new double[right.size];
+	for(int i = 0; i < right.size; ++i){
+		temp[i] = (-(right.coeff[i]));
+	}
+	Polynomial p = Polynomial(temp, right.size);
+	delete [] temp;
+	return *this + p;
+}
+
+Polynomial Polynomial::operator*(const Polynomial& right) const{
+	int rsltSize = size + right.size - 1;
+	double* rslt = new double[rsltSize];
+	for(int i = 0; i < size; ++i){
+		for(int j = 0; j < right.size; ++j){
+			rslt[i + j] += coeff[i] * right.coeff[j];
+		}
+	}
+	Polynomial p = Polynomial(rslt, rsltSize);
+	delete [] rslt;
+	return p;
+}
+
+Polynomial Polynomial::operator*(double n) const{
+	double* rslt = new double[size];
+	for(int i = 0; i < size; ++i){
+		rslt[i] = n * coeff[i];
+	}
+	Polynomial p = Polynomial(rslt, size);
+	delete [] rslt;
+	return p;
+}
 
 
 
@@ -199,6 +261,10 @@ double& Polynomial::operator[](int n){
 
 
 
+std::ostream& operator<<(std::ostream& os, const Polynomial& p){
+	os << p.str();
+	return os;
+}
 
 
 

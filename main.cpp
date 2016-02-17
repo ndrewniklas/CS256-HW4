@@ -105,7 +105,7 @@ public:
         p = Polynomial(cf, 5);
         printResult("9x^4 + 2x^3 - 6x^2 + 41x - 3 solve(3)", p.solve(3) == 849);
     }
-
+/*
     void testBrackets() const
     {
         Polynomial p(0);
@@ -134,7 +134,7 @@ public:
         printResult("[4] = -5", p.coeff[0] == 4 && p.coeff[1] == 2.1 && p.coeff[2] == 0 
                 && p.coeff[3] == 0 && p.coeff[4] == -5 && p.degree() == 4);
     }
-/*
+*/
     void testArithmetic() const
     {
         Polynomial p1(3);
@@ -196,7 +196,7 @@ public:
         p1[3] = 9.3;
         printResult("p1 != p2 after copy", p1 != p2);
     }
-/*
+*/
     void testOutput() const
     {
         double cf2[7] = {3, -1, 18.66, 2, -5, 11, -1};
@@ -206,7 +206,7 @@ public:
         std::string s = sout.str();
         printResult("Test <<", s == p2.str() && p2.str() == "-x^6 + 11x^5 - 5x^4 + 2x^3 + 18.66x^2 - x + 3");
     }
-*/
+
 };
 
     
@@ -221,11 +221,11 @@ int main()
     pt.testSizes();
     pt.testToString();
     pt.testSolve();
-    pt.testBrackets();
-    //pt.testArithmetic();
+    //pt.testBrackets();
+    pt.testArithmetic();
     //pt.testAssignments();
     //pt.testEquals();
-    //pt.testOutput();
+    pt.testOutput();
     
     return 0;
 }

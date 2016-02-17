@@ -35,6 +35,13 @@ public:
 	
 	double& operator[](int n);
 	
+	Polynomial operator+(const Polynomial& right) const;
+	Polynomial operator-(const Polynomial& right) const;
+	Polynomial operator*(const Polynomial& right) const;
+	Polynomial operator*(double n) const;
+	
 };
+
+std::ostream& operator<<(std::ostream& os, const Polynomial& p);
 
 #endif
