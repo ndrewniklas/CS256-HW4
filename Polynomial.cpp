@@ -67,12 +67,16 @@ int Polynomial::getSize() const{
 }
 
 int Polynomial::degree() const{
-	for(int i = size - 1; i > 0; --i){
-		if(rint(coeff[i]) != 0){
-			return i;
+	if(size == 1){
+		return 0;
+	}else{
+		for(int i = size - 1; i >= 0; --i){
+			if(!(std::islessequal(coeff[i], 0.0) && std::isgreaterequal(coeff[i], 0.0))){
+				return i;
+			}
 		}
 	}
-	return -1;
+	return -2;
 }
 
 std::string Polynomial::str() const{
@@ -84,7 +88,8 @@ std::string Polynomial::str() const{
 			
 		}else if(std::isless(coeff[i], -1.0)){
 			//coeff[i] < -1
-			first ? s <<  "" : s <<  " - ";
+			s << " - ";
+			//first ? s <<  "" : s <<  " - ";
 			s <<  fabs(coeff[i]);
 			if(i > 1){
 				s <<  "x^";
@@ -116,7 +121,8 @@ std::string Polynomial::str() const{
 			
 		}else if(std::islessequal(coeff[i], -1.0) && std::isgreaterequal(coeff[i], -1.0)){
 			//coeff[i] == -1
-			first ? s <<  "" : s <<  " - ";
+			s << " - ";
+			//first ? s <<  "" : s <<  " - ";
 			if(i > 1){
 				s <<  "x^";
 				s <<  i;
@@ -147,12 +153,12 @@ double Polynomial::solve(double x) const{
 }
 
 void Polynomial::grow(int n){
-	double* temp = new double[n + 1];
+	double* temp = new double[n];
 	for(int i = 0; i < size; ++i){
 		temp[i] = coeff[i];
 	}
-	for(int j = size; j < (n + 1); ++j){
-		temp[j] = 0.0;
+	for(int j = size; j <= n; ++j){
+		temp[j] = 0;
 	}
 	size = n;
 	delete [] coeff;
@@ -160,11 +166,17 @@ void Polynomial::grow(int n){
 }
 
 double& Polynomial::operator[](int n){
+	std::cout << "\nsize: " << size << std::endl;
+	std::cout << "n: " << n << std::endl;
 	if(size < n){
-		grow(n);
+		grow(n + 1);
+	}else if(size == n){
+		grow(n + 1);
 	}
+	std::cout << "new size: " << size << std::endl;
 	return coeff[n];
 }
+
 
 
 

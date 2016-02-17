@@ -11,7 +11,7 @@ class PolyTester
 public:
     void printResult(string output, bool pass) const
     {
-        std::cout << (pass ? "PASS\t" : "FAIL\t")
+        std::cout << (pass ? "PASS\t" : "  FAIL\t")
               << output << std::endl;
     }
 
@@ -109,18 +109,28 @@ public:
     void testBrackets() const
     {
         Polynomial p(0);
-        std::cout << p.str() << std::endl;
         p[0] = 4;
         std::cout << p.str() << std::endl;
-        std::cout << "degree: " << p.degree() << std::endl;
+        for(int i = 0; i < p.getSize(); ++i){
+			std::cout << p.coeff[i] << " ";
+		}
+        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[0] = 4", p.coeff[0] == 4 && p.degree() == 0);
+       
         p[1] = 2.1;
         std::cout << p.str() << std::endl;
-        std::cout << "degree: " << p.degree() << std::endl;
+        for(int i = 0; i < p.getSize(); ++i){
+			std::cout << p.coeff[i] << " ";
+		}
+        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[1] = 2.1", p.coeff[0] == 4 && p.coeff[1] == 2.1 && p.degree() == 1);
+       
         p[4] = -5;
         std::cout << p.str() << std::endl;
-        std::cout << "degree: " << p.degree() << std::endl;
+        for(int i = 0; i < p.getSize(); ++i){
+			std::cout << p.coeff[i] << " ";
+		}
+        std::cout << "\ndegree: " << p.degree() << std::endl;
         printResult("[4] = -5", p.coeff[0] == 4 && p.coeff[1] == 2.1 && p.coeff[2] == 0 
                 && p.coeff[3] == 0 && p.coeff[4] == -5 && p.degree() == 4);
     }
