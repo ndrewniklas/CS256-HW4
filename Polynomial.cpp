@@ -151,16 +151,15 @@ void Polynomial::grow(int n){
 	for(int i = 0; i < size; ++i){
 		temp[i] = coeff[i];
 	}
-	for(int j = size; j < n + 1; ++j){
-		temp[j] = 0;
+	for(int j = size; j < (n + 1); ++j){
+		temp[j] = 0.0;
 	}
-	size = n + 1;
+	size = n;
 	delete [] coeff;
 	coeff = temp;
 }
 
 double& Polynomial::operator[](int n){
-	//if modifing
 	if(size < n){
 		grow(n);
 	}
