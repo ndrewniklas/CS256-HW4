@@ -40,6 +40,10 @@ public:
 	Polynomial operator*(const Polynomial& right) const;
 	Polynomial operator*(double n) const;
 	
+	Polynomial& operator+=(const Polynomial& right);
+	Polynomial& operator-=(const Polynomial& right);
+	Polynomial& operator*=(const Polynomial& right);
+	
 };
 
 std::ostream& operator<<(std::ostream& os, const Polynomial& p);

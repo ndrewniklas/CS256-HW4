@@ -90,7 +90,6 @@ std::string Polynomial::str() const{
 			
 		}else if(std::isless(coeff[i], -1.0)){
 			//coeff[i] < -1
-			//s << " - ";
 			first ? s <<  "-" : s <<  " - ";
 			s <<  fabs(coeff[i]);
 			if(i > 1){
@@ -123,7 +122,6 @@ std::string Polynomial::str() const{
 			
 		}else if(std::islessequal(coeff[i], -1.0) && std::isgreaterequal(coeff[i], -1.0)){
 			//coeff[i] == -1
-			//s << " - ";
 			first ? s <<  "-" : s <<  " - ";
 			if(i > 1){
 				s <<  "x^";
@@ -132,7 +130,9 @@ std::string Polynomial::str() const{
 				s << "x";
 			}	
 		}
-		first = false;
+		if(s.tellp() != 0){
+			first = false;
+		}
 	}
 	
 	return s.str();
@@ -224,7 +224,7 @@ Polynomial Polynomial::operator*(const Polynomial& right) const{
 	double* rslt = new double[rsltSize];
 	for(int i = 0; i < size; ++i){
 		for(int j = 0; j < right.size; ++j){
-			rslt[i + j] += coeff[i] * right.coeff[j];
+			rslt[i + j] += (coeff[i] * right.coeff[j]);
 		}
 	}
 	Polynomial p = Polynomial(rslt, rsltSize);
@@ -240,6 +240,21 @@ Polynomial Polynomial::operator*(double n) const{
 	Polynomial p = Polynomial(rslt, size);
 	delete [] rslt;
 	return p;
+}
+
+Polynomial& Polynomial::operator+=(const Polynomial& right){
+	*this = *this + right;
+	return *this;
+}
+
+Polynomial& Polynomial::operator-=(const Polynomial& right){
+	*this = *this - right;
+	return *this;
+}
+
+Polynomial& Polynomial::operator*=(const Polynomial& right){
+	*this = (*this) * right;
+	return *this;
 }
 
 
