@@ -74,12 +74,9 @@ public:
         lengthCorrect &= p.getSize() == 7;
         printResult("getSize()", lengthCorrect);
         bool degreeCorrect = p.degree() == 6;
-		// std::cout << p.degree() << std::endl;
-		// printResult("degree() 1", degreeCorrect);
         double cf2[14] = {2.1, 3, -1, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0};
         p = Polynomial(cf2, 14);
         degreeCorrect &= p.degree() == 7;
-		// std::cout << p.degree() << std::endl;
         printResult("degree()", degreeCorrect);
     }
 
