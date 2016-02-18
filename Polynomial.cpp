@@ -210,13 +210,7 @@ Polynomial Polynomial::operator+(const Polynomial& right) const{
 }
 
 Polynomial Polynomial::operator-(const Polynomial& right) const{
-	double* temp = new double[right.size];
-	for(int i = 0; i < right.size; ++i){
-		temp[i] = -right.coeff[i];
-	}
-	Polynomial p = Polynomial(temp, right.size);
-	delete [] temp;
-	return *this + p;
+	return *this + (right * -1);
 }
 
 Polynomial Polynomial::operator*(const Polynomial& right) const{
@@ -248,12 +242,12 @@ Polynomial& Polynomial::operator+=(const Polynomial& right){
 }
 
 Polynomial& Polynomial::operator-=(const Polynomial& right){
-	*this = *this - right;
+	*this = *this + (right * -1);
 	return *this;
 }
 
 Polynomial& Polynomial::operator*=(const Polynomial& right){
-	*this = (*this) * right;
+	*this = *this * right;
 	return *this;
 }
 
