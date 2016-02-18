@@ -127,7 +127,9 @@ public:
         double cf1[4] = {2, 1, -4, 9.3};
         double cf2[7] = {3, -1, 18.66, 2, -5, 11, -1};
         p1 = Polynomial(cf1, 4);
+		// std::cout << "p1:  " << p1 << std::endl;
         p2 = Polynomial(cf2, 7);
+		// std::cout << "p2:  " << p2 << std::endl;
         p3 = p1 + p2;
         double resCf[7] = {5, 0, 14.66, 11.3, -5, 11, -1};
         bool plusCorrect = true;
@@ -144,9 +146,13 @@ public:
 		// std::cout << "size: " << p3.getSize() << std::endl;
 		// std::cout << "degree: " << p3.degree() << std::endl;
         printResult("p3 - p3", p3.coeff[0] == 0 && p3.degree() == 0);
-        Polynomial p4(p1 * p2);
+		Polynomial p4(p1 * p2);
         printResult("p1 * p2", p4.str() == "-9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6");
-        Polynomial p5(p1 * 4);
+        // std::cout << "\np1:  " << p1 << std::endl;
+		// std::cout << "p2:  " << p2 << std::endl;
+		// std::cout << "ans: -9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6" << std::endl;
+		// std::cout << "my:  " << p4 << "\n" << std::endl;
+		Polynomial p5(p1 * 4);
         printResult("p1 * 4", p5.str() == "37.2x^3 - 16x^2 + 4x + 8");
     }
 
@@ -161,10 +167,8 @@ public:
         p1 -= p2;
         printResult("p1 -= p2", p1.str() == "9.3x^3 - 4x^2 + x + 2");
         p2 *= p1;
-		std::cout << p2 << std::endl;
         printResult("p2 *= p1", p2.str() == "-9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6");
         p2 = p2 = p2 = p2 = p2 = p2 = p2;
-		std::cout << p2 << std::endl;
         printResult("p2 = p2", p2.str() == "-9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6");
     }
 /*

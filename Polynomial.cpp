@@ -7,7 +7,8 @@
 
 Polynomial::Polynomial()
 	:coeff(new double[1]), size(1)
-{ 
+{
+	coeff[0] = 0;
 }
 
 Polynomial::Polynomial(double arr[], int n)
@@ -214,16 +215,14 @@ Polynomial Polynomial::operator-(const Polynomial& right) const{
 }
 
 Polynomial Polynomial::operator*(const Polynomial& right) const{
-	int rsltSize = size + right.size - 1;
-	double* rslt = new double[rsltSize];
+	Polynomial rslt;
 	for(int i = 0; i < size; ++i){
 		for(int j = 0; j < right.size; ++j){
 			rslt[i + j] += (coeff[i] * right.coeff[j]);
+			// std::cout << (i+j) << ": " << rslt[i+j] << std::endl;
 		}
 	}
-	Polynomial p = Polynomial(rslt, rsltSize);
-	delete [] rslt;
-	return p;
+	return rslt;
 }
 
 Polynomial Polynomial::operator*(double n) const{
