@@ -1,3 +1,8 @@
+//Andrew Niklas
+//Homework 4
+//Completed 2/18/2016
+
+
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
@@ -43,6 +48,9 @@ public:
 	Polynomial& operator+=(const Polynomial& right);
 	Polynomial& operator-=(const Polynomial& right);
 	Polynomial& operator*=(const Polynomial& right);
+	
+	bool operator==(const Polynomial& right) const;
+	bool operator!=(const Polynomial& right) const;
 	
 };
 

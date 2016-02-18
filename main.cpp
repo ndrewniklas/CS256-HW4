@@ -1,3 +1,8 @@
+//Andrew Niklas
+//Homework 4
+//Completed 2/18/2016
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -171,7 +176,7 @@ public:
         p2 = p2 = p2 = p2 = p2 = p2 = p2;
         printResult("p2 = p2", p2.str() == "-9.3x^9 + 106.3x^8 - 91.5x^7 + 47.6x^6 + 182.538x^5 - 91.94x^4 + 54.56x^3 + 24.32x^2 + x + 6");
     }
-/*
+
     void testEquals() const
     {
         double cf1[4] = {2, 1, -4, 9.3};
@@ -187,7 +192,7 @@ public:
         p1[3] = 9.3;
         printResult("p1 != p2 after copy", p1 != p2);
     }
-*/
+
     void testOutput() const
     {
         double cf2[7] = {3, -1, 18.66, 2, -5, 11, -1};
@@ -215,7 +220,7 @@ int main()
     pt.testBrackets();
     pt.testArithmetic();
     pt.testAssignments();
-    //pt.testEquals();
+	pt.testEquals();
     pt.testOutput();
     
     return 0;

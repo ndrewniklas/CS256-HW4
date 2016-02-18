@@ -1,3 +1,8 @@
+//Andrew Niklas
+//Homework 4
+//Completed 2/18/2016
+
+
 #include <sstream>
 #include <cmath>
 
@@ -250,33 +255,24 @@ Polynomial& Polynomial::operator*=(const Polynomial& right){
 	return *this;
 }
 
+bool Polynomial::operator==(const Polynomial& right) const{
+	if(degree() != right.degree()){
+		return false;
+	}else{
+		for(int i = 0; i < degree() + 1; ++i){
+			if(coeff[i] != right.coeff[i]){
+				return false;
+			}
+		}
+		return true;
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bool Polynomial::operator!=(const Polynomial& right) const{
+	return !(*this == right);
+}
 
 std::ostream& operator<<(std::ostream& os, const Polynomial& p){
 	os << p.str();
 	return os;
 }
-
-
-
-
-
